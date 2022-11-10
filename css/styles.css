@@ -94,12 +94,41 @@ body {
 #time-sector{
   color: white;
   text-align: center;
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 0 3px 0 3px;
 }
-#time-sector > div:first-child {
+#time-sector > div > div:first-child {
   border-bottom: 1px solid white;
 }
 .bn_date {
   font-weight: bold;
+}
+#power-state-parent{
+  height: 60px;
+}
+#power-state{
+  width: 20%;
+  min-width: 155px;
+}
+.circle {
+  animation: circle 1s infinite;
+  margin: 0 auto;
+  width: 80%;
+  height: 80%;
+  border-radius: 50%;
+}
+/*@keyframes circle {*/
+/*  from{*/
+/*    border: 17px solid #DC3545;*/
+/*  }*/
+/*  to{*/
+/*    border: 17px solid #c43939;*/
+/*  }*/
+/*}*/
+
+.card-body{
+  height: 200px;
 }
 
 /* <<<<<<<<<<<<<<<<<<<<<<<<<<< */
@@ -11358,19 +11387,6 @@ body {
 
 .sb-sidenav-toggled #layoutSidenav #layoutSidenav_nav {
   transform: translateX(0);
-}
-.sb-sidenav-toggled #layoutSidenav #layoutSidenav_content:before {
-  content: "";
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #000;
-  z-index: 1037;
-  opacity: 0.5;
-  transition: opacity 0.3s ease-in-out;
 }
 
 @media (min-width: 992px) {
