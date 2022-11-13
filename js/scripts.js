@@ -5,7 +5,28 @@
     */
     // 
 // Scripts
-// 
+//
+
+/**
+ * Power State
+ */
+//System off
+let state = 1;
+if (state === 0) {
+    $(function (){
+        $(".circle").css({
+            "border": "17px #DC3545 solid"
+        })
+    })
+}
+//System on
+else if (state === 1) {
+    $(function (){
+        $(".circle").css({
+            "border": "17px #198754 solid"
+        })
+    })
+}
 
 /**
  * Time
@@ -31,36 +52,13 @@ function clock(){
 
 }
 function init() {
-    // 최초에 함수를 한번 실행
     clock();
 
-    //1초마다 반복
     setInterval(clock, 1000);
 }
 $(document).ready(function(){
     init();
 });
-
-/**
- * Power State
- */
-//System off
-let state = 0;
-if (state === 0) {
-    $(function (){
-        $(".circle").css({
-            "border": "17px #DC3545 solid"
-        })
-    })
-}
-//System on
-else if (state === 1) {
-    $(function (){
-        $(".circle").css({
-            "border": "17px #198754 solid"
-        })
-    })
-}
 
 
 
