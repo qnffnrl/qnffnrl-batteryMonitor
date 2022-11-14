@@ -9,10 +9,11 @@
         <link href="css/styles.css" rel="stylesheet">
         <script src="https://code.jquery.com/jquery-3.6.0.slim.js"></script>
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     </head>
     <body class="sb-nav-fixed sb-sidenav-toggled px-3">
 
-        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <nav id="nav-bar" class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 
             <!-- Logo -->
             <a class="navbar-brand ps-3" href="index.html">BA Energy</a>
@@ -32,16 +33,26 @@
                 <main>
                     <div class="container-fluid px-4">
 
+                        <br><br>
+
                         <!-- Power State -->
                         <div id="power-state-parent" class="mt-3 d-flex justify-content-end">
+
+                            <div class="border fs-5 d-flex justify-content-between align-items-center px-2">
+                                <span id="pcs">PCS 용량 : 200kw</span>
+                            </div>
+
                             <div id="power-state" class="border fs-4 d-flex justify-content-between align-items-center px-2">
                                 <span>운영상태</span>
                                 <span><div class="circle"></div></span>
                             </div>
+
                         </div>
 
+                        <!-- Title -->
                         <h1 class="mt-3">Dashboard</h1>
                         <hr style="border: 1px solid black;">
+                        <!-- Sub Title -->
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item active px-1">Battery Status</li>
                         </ol>
@@ -51,10 +62,15 @@
                             <div class="col-xl-3 col-md-6">
                                 <div class="card mb-4">
                                     <div class="card-header">
-                                        <b>#1 ID_001</b>
+                                        <b>배터리 온도</b>
                                     </div>
                                     <div class="card-body">
-
+                                        <div class="card-body d-flex justify-content-center flex-column align-items-center">
+                                            <div class="w-100 d-flex text-center">
+                                                <div class="w-100 text-in-card" id="battery-tem"></div>
+                                            </div>
+                                            <div class="chart-sector d-flex justify-content-center flex-column align-items-center" id="batteryTem-chart"></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -62,21 +78,14 @@
                             <div class="col-xl-3 col-md-6">
                                 <div class="card mb-4">
                                     <div class="card-header">
-                                        <b>#1 ID_002</b>
+                                        <b>배터리실 온ㆍ습도</b>
                                     </div>
-                                    <div class="card-body">
-
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <b>#1 ID_003</b>
-                                    </div>
-                                    <div class="card-body">
-
+                                    <div class="card-body d-flex justify-content-center flex-column align-items-center">
+                                        <div class="w-100 d-flex text-center">
+                                            <div class="w-50 text-in-card" id="batteryRoom-tem"></div>
+                                            <div class="w-50 text-in-card" id="batteryRoom-hum"></div>
+                                        </div>
+                                        <div class="chart-sector d-flex justify-content-center flex-column align-items-center" id="batteryRoom-chart"></div>
                                     </div>
                                 </div>
                             </div>
@@ -84,10 +93,30 @@
                             <div class="col-xl-3 col-md-6">
                                 <div class="card mb-4">
                                     <div class="card-header">
-                                        <b>#1 ID_004</b>
+                                        <b>금일 충ㆍ방전량</b>
+                                    </div>
+                                    <div class="card-body d-flex justify-content-center flex-column align-items-center">
+                                        <div class="w-100 d-flex text-center">
+                                            <div class="w-50 text-in-card" id="today-charge"></div>
+                                            <div class="w-50 text-in-card" id="today-discharge"></div>
+                                        </div>
+                                        <div class="chart-sector d-flex justify-content-center flex-column align-items-center" id="today-charge-discharge-chart"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <b>배터리 용량</b>
                                     </div>
                                     <div class="card-body">
-
+                                        <div class="card-body d-flex justify-content-center flex-column align-items-center">
+                                            <div class="w-100 d-flex text-center">
+                                                <div class="w-100 text-in-card" id="battery-volume"></div>
+                                            </div>
+                                            <div class="chart-sector d-flex justify-content-center flex-column align-items-center" id="batteryVolume-chart"></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -97,21 +126,14 @@
                             <div class="col-xl-3 col-md-6">
                                 <div class="card mb-4">
                                     <div class="card-header">
-                                        <b>#1 ID_005</b>
+                                        <b>배터리</b>
                                     </div>
-                                    <div class="card-body">
-
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <b>#1 ID_006</b>
-                                    </div>
-                                    <div class="card-body">
-
+                                    <div class="card-body d-flex justify-content-center flex-column align-items-center">
+                                        <div class="w-100 d-flex text-center">
+                                            <div class="w-50 text-in-card" id="battery-volt"></div>
+                                            <div class="w-50 text-in-card" id="battery-ampere"></div>
+                                        </div>
+                                        <div class="chart-sector d-flex justify-content-center flex-column align-items-center" id="battery-volt-ampere-chart"></div>
                                     </div>
                                 </div>
                             </div>
@@ -119,10 +141,14 @@
                             <div class="col-xl-3 col-md-6">
                                 <div class="card mb-4">
                                     <div class="card-header">
-                                        <b>#1 ID_007</b>
+                                        <b>실내 온ㆍ습도 1</b>
                                     </div>
-                                    <div class="card-body">
-
+                                    <div class="card-body d-flex justify-content-center flex-column align-items-center">
+                                        <div class="w-100 d-flex text-center">
+                                            <div class="w-50 text-in-card" id="indoor1-tem"></div>
+                                            <div class="w-50 text-in-card" id="indoor1-hum"></div>
+                                        </div>
+                                        <div class="chart-sector d-flex justify-content-center flex-column align-items-center" id="indoor1-chart"></div>
                                     </div>
                                 </div>
                             </div>
@@ -130,73 +156,36 @@
                             <div class="col-xl-3 col-md-6">
                                 <div class="card mb-4">
                                     <div class="card-header">
-                                        <b>#1 ID_008</b>
+                                        <b>실내 온ㆍ습도 2</b>
                                     </div>
-                                    <div class="card-body">
-
+                                    <div class="card-body d-flex justify-content-center flex-column align-items-center">
+                                        <div class="w-100 d-flex text-center">
+                                            <div class="w-50 text-in-card" id="indoor2-tem"></div>
+                                            <div class="w-50 text-in-card" id="indoor2-hum"></div>
+                                        </div>
+                                        <div class="chart-sector d-flex justify-content-center flex-column align-items-center" id="indoor2-chart"></div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <!-- Table -->
-                        <div class="card mb-4">
-                            <div class="card-header">
-                                <i class="fas fa-table me-1"></i>
-                                DataTable
-                            </div>
-                            <div class="card-body">
-                                <table id="datatablesSimple">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2011/04/25</td>
-                                            <td>$320,800</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <b>실내 온ㆍ습도 3</b>
+                                    </div>
+                                    <div class="card-body d-flex justify-content-center flex-column align-items-center">
+                                        <div class="w-100 d-flex text-center">
+                                            <div class="w-50 text-in-card" id="indoor3-tem"></div>
+                                            <div class="w-50 text-in-card" id="indoor3-hum"></div>
+                                        </div>
+                                        <div class="chart-sector d-flex justify-content-center flex-column align-items-center" id="indoor3-chart"></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
                     </div>
                 </main>
-
-                <!-- footer -->
-                <footer class="py-4 bg-light mt-auto">
-                    <div class="container-fluid px-4">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2022</div>
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                                <a href="#">Terms &amp; Conditions</a>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
 
             </div>
         </div>
