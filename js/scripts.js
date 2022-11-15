@@ -213,10 +213,20 @@ function drawChart(tem, hum, tagName) {
 //인수 2개 짜리 차트
 function drawChart2(tem, tagName) {
 
-    let data = google.visualization.arrayToDataTable([
-        ['Label', 'Value'],
-        ['Temperature', Number(tem)]
-    ]);
+    let data;
+    if (tagName === "batteryTem-chart"){
+        data = google.visualization.arrayToDataTable([
+            ['Label', 'Value'],
+            ['Temperature', Number(tem)]
+        ]);
+    }else if(tagName == "batteryVolume-chart"){
+        data = google.visualization.arrayToDataTable([
+            ['Label', 'Value'],
+            ['Volume', Number(tem)]
+        ]);
+    }
+
+
 
     let options = {
         width: "100%", height: "100%",
