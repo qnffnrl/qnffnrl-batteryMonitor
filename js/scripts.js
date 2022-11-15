@@ -133,7 +133,18 @@ function randomNumberMaker(){
     drawChart(todayCharge, todayDischarge, "today-charge-discharge-chart");
 
     $("#battery-volume").html("용량 : " + batteryVolume + "% (SoC)");
-    drawChart2(batteryTem, "batteryVolume-chart");
+    drawingBatterySocChart(batteryVolume);
+    //차트 크기 반응형 핸들러 -start
+    function resizeHandler () {
+        drawingBatterySocChart(batteryVolume);
+    }
+    if (window.addEventListener) {
+        window.addEventListener('resize', resizeHandler, false);
+    }
+    else if (window.attachEvent) {
+        window.attachEvent('onresize', resizeHandler);
+    }
+    //차트 크기 반응형 핸들러 -end
 
     $("#battery-volt").html("전압 : " + batteryVolt + " (V)");
     $("#battery-ampere").html("전류 : " + batteryAmpere + " (A)");
@@ -251,6 +262,30 @@ function drawChart2(tem, tagName) {
         window.attachEvent('onresize', resizeHandler);
     }
     //차트 크기 반응형 핸들러 -end
+}
+
+/**
+ * c3js Chart
+ */
+function drawingBatterySocChart(batteryVolume) {
+    var chart = c3.generate({
+        bindto: '#batteryVolume-chart',
+        data: {
+            columns: [
+                ['Volume', batteryVolume]
+            ],
+            type: 'gauge',
+        },
+        color: {
+            pattern: ['#FF0000', '#F97600', '#F6C600', '#60B044'], // the three color levels for the percentage values.
+            threshold: {
+                values: [30, 60, 90, 100]
+            }
+        },
+        size: {
+            height: 180
+        }
+    });
 }
 
 
