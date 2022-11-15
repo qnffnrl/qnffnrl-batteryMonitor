@@ -1,18 +1,9 @@
-/*!
-    * Start Bootstrap - SB Admin v7.0.5 (https://startbootstrap.com/template/sb-admin)
-    * Copyright 2013-2022 Start Bootstrap
-    * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-sb-admin/blob/master/LICENSE)
-    */
-    //
-// Scripts
-//
-
 /**
  * 전원 동작 출력 부분
  * Power state
  */
 let state = {
-    value : 2
+    value : 1
 }; //임시 선언
 
 //System Stop
@@ -76,6 +67,7 @@ function clock(){
 }
 
 /**
+ * Rack Data
  * API Call / Parsing
  */
 const url = "http://121.178.2.4:9000/api?api_key=2a618e17de2f851d74216ddef0256bc1";
