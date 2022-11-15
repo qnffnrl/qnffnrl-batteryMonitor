@@ -112,7 +112,7 @@ function apiCall() {
 /**
  * 임시
  * 난수 생성
- * 배터리 온도, 금일 충방전량, 배터리 용량
+ * 배터리 온도, 금일 충방전량, 배터리 용량, 배터리(Volt, Ampere)
  */
 function randomNumberMaker(){
     const batteryTem = Math.floor(Math.random() * 50);
@@ -146,11 +146,13 @@ function init() {
     apiCall()
     randomNumberMaker()
 
-    setInterval(clock, 1000);    //현재 시간 1초 루프
-    setInterval(apiCall, 10000); //API 10초 루프
-    setInterval(randomNumberMaker, 10000);
+    setInterval(clock, 1000);               //현재 시간 1초 루프
+    setInterval(apiCall, 10000);            //API 10초 루프
+    setInterval(randomNumberMaker, 10000);  //난수 생성 10초 루프
+
 }
-$(document).ready(function(){
+//Static Resource 모두 로딩 후 Start
+$(window).on('load', function(){
     init();
 });
 
@@ -158,8 +160,9 @@ $(document).ready(function(){
  * Google Chart
  */
 google.charts.load('current', {'packages':['gauge']});
-google.charts.setOnLoadCallback(drawChart);
+google.charts.setOnLoadCallback(drawChart, drawChart2);
 
+//인수 3개 짜리 차트
 function drawChart(tem, hum, tagName) {
     let data;
     if (tagName === "today-charge-discharge-chart"){
