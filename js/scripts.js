@@ -83,7 +83,7 @@ function apiCall() {
             let rack5 = data.rack5[0]; //실내 온ㆍ습도 3
 
             $("#battery-tem").html("온도 : " + rack2['sd1'] + "(℃)");
-            drawChart2(rack2['sd1'], "batteryTem-chart");
+            batteryThermometerDraw(rack2['sd1']);
 
             $("#batteryRoom-tem").html("온도 : " + rack2['sd1'] + " (℃)");
             $("#batteryRoom-hum").html("습도 : " + rack2['sd2'] + " (%)");
@@ -107,7 +107,7 @@ function apiCall() {
 /**
  * 임시
  * 난수 생성
- * 배터리 온도, 금일 충방전량, 배터리 용량, 배터리(Volt, Ampere)
+ * 금일 충방전량, 배터리 용량, 배터리(Volt, Ampere)
  */
 function randomNumberMaker(){
 
@@ -149,7 +149,6 @@ function init() {
     setInterval(clock, 1000);               //현재 시간 1초 루프
     setInterval(apiCall, 10000);            //API 10초 루프
     setInterval(randomNumberMaker, 10000);  //난수 생성 10초 루프
-
 }
 //Static Resource 모두 로딩 후 Start
 $(window).on('load', function(){
@@ -160,58 +159,14 @@ $(window).on('load', function(){
  * Google Chart
  */
 google.charts.load('current', {'packages':['gauge']});
-google.charts.setOnLoadCallback(drawChart, drawChart2);
+google.charts.setOnLoadCallback(drawChart);
 
-//인수 3개 짜리 차트
 function drawChart(tem, hum, tagName) {
     let data = google.visualization.arrayToDataTable([
         ['Label', 'Value'],
         ['Temperature', Number(tem)],
         ['Humidity', Number(hum)],
     ]);
-
-    let options = {
-        width: "100%", height: "100%",
-        yellowFrom:75, yellowTo: 90,
-        redFrom: 90, redTo: 100,
-        minorTicks: 5,
-        legend: "test"
-    };
-
-    let chart = new google.visualization.Gauge(document.getElementById(tagName));
-
-    chart.draw(data, options);
-
-    //차트 크기 반응형 핸들러 -start
-    function resizeHandler () {
-        chart.draw(data, options);
-    }
-    if (window.addEventListener) {
-        window.addEventListener('resize', resizeHandler, false);
-    }
-    else if (window.attachEvent) {
-        window.attachEvent('onresize', resizeHandler);
-    }
-    //차트 크기 반응형 핸들러 -end
-}
-
-//인수 2개 짜리 차트
-function drawChart2(tem, tagName) {
-
-    let data;
-    if (tagName === "batteryTem-chart"){
-        data = google.visualization.arrayToDataTable([
-            ['Label', 'Value'],
-            ['Temperature', Number(tem)]
-        ]);
-    }else if(tagName == "batteryVolume-chart"){
-        data = google.visualization.arrayToDataTable([
-            ['Label', 'Value'],
-            ['Volume', Number(tem)]
-        ]);
-    }
-
-
 
     let options = {
         width: "100%", height: "100%",
@@ -262,6 +217,33 @@ function drawingBatterySocChart(batteryVolume) {
     });
 }
 
+/**
+ * Battery Thermometer Draw
+ *
+ * Copyright (c) 2022 by Arkellys (https://codepen.io/Arkellys/pen/rgpNBK)
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+function batteryThermometerDraw(tem){
+    const units = {Celcius: "°C"};
+
+    const config = {
+        minTemp: 0,
+        maxTemp: 100,
+        unit: "Celcius" };
+
+    // Change temperature
+
+    const temperature = document.getElementById("temperature");
+
+    function setTemperature() {
+        temperature.style.height = (tem - config.minTemp) / (config.maxTemp - config.minTemp) * 100 + "%";
+        temperature.dataset.value = tem + units[config.unit];
+    }
+    range.addEventListener("input", setTemperature);
+    setTimeout(setTemperature, 1);
+}
 
 
 

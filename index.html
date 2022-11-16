@@ -82,13 +82,23 @@
                                     <div class="card-header">
                                         <b>배터리 온도</b>
                                     </div>
-                                    <div class="card-body d-flex justify-content-center flex-column align-items-center">
-                                        <div class="w-100 d-flex text-center">
+                                    <div class="card-body d-flex justify-content-center flex-row align-items-center">
+                                        <div class="w-50 d-flex text-center">
                                             <div class="w-100 text-in-card" id="battery-tem"><!-- From Javascript --></div>
                                         </div>
-                                        <div class="chart-sector d-flex justify-content-center flex-column align-items-center" id="batteryTem-chart">
-                                            <!-- From Javascript -->
+                                        <!-- from https://codepen.io/Arkellys/pen/rgpNBK -->
+                                        <div class="w-50" id="wrapper">
+                                            <div id="termometer">
+                                                <div id="temperature" style="height:0" data-value="0°C"></div>
+                                                <div id="graduations"></div>
+                                            </div>
+                                            <div id="playground">
+                                                <div id="range">
+                                                    <input type="range" min="0" max="100" style="display: none;">
+                                                </div>
+                                            </div>
                                         </div>
+                                        <!-- end -->
                                     </div>
                                 </div>
                             </div>
