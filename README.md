@@ -1,8 +1,9 @@
 # qnffnrl-batteryMonitor
 * 배터리 모니터링 페이지 퍼블리싱
-* Template from -> https://startbootstrap.com/template/sb-admin
+
 
 ## Reference
+* Template from -> https://startbootstrap.com/template/sb-admin
 * https://codepen.io/Arkellys/pen/rgpNBK
 * Copyright (c) 2022 by Arkellys (https://codepen.io/Arkellys/pen/rgpNBK)
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
