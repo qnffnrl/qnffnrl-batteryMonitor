@@ -2,6 +2,13 @@
 * 배터리 모니터링 페이지 퍼블리싱
 * Template from -> https://startbootstrap.com/template/sb-admin
 
+## Reference
+* https://codepen.io/Arkellys/pen/rgpNBK
+* Copyright (c) 2022 by Arkellys (https://codepen.io/Arkellys/pen/rgpNBK)
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
 ## MockUP
 ![화면 캡처 2022-11-10 225033](https://user-images.githubusercontent.com/71891870/201109172-a13c7ca8-c8a5-4f5f-bef6-8c8cd6525607.png)
 
