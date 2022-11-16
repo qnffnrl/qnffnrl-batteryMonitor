@@ -18,7 +18,7 @@ if (state.value === 0) {
 else if (state.value === 1) {
     $(function (){
         $(".circle").css({
-            "border": "17px #198754 solid"
+            "border": "17px #198754 solid",
         })
     })
 }
@@ -82,6 +82,9 @@ function apiCall() {
             let rack4 = data.rack4[0]; //실내 온ㆍ습도 2
             let rack5 = data.rack5[0]; //실내 온ㆍ습도 3
 
+            $("#battery-tem").html("온도 : " + rack2['sd1'] + "(℃)");
+            drawChart2(rack2['sd1'], "batteryTem-chart");
+
             $("#batteryRoom-tem").html("온도 : " + rack2['sd1'] + " (℃)");
             $("#batteryRoom-hum").html("습도 : " + rack2['sd2'] + " (%)");
             drawChart(rack2['sd1'], rack2['sd2'], "batteryRoom-chart");
@@ -107,7 +110,6 @@ function apiCall() {
  * 배터리 온도, 금일 충방전량, 배터리 용량, 배터리(Volt, Ampere)
  */
 function randomNumberMaker(){
-    const batteryTem = Math.floor(Math.random() * 50);
 
     const todayCharge = Math.floor(Math.random() * 80) + 30;
     const todayDischarge = Math.floor(Math.random() * 50) + 30;
@@ -117,15 +119,15 @@ function randomNumberMaker(){
     const batteryVolt = Math.floor(Math.random() * 20) + 40;
     const batteryAmpere = Math.floor(Math.random() * 20) + 40;
 
-    $("#battery-tem").html("온도 : " + batteryTem + "(℃)");
-    drawChart2(batteryTem, "batteryTem-chart");
-
     $("#today-charge").html("충전량 : " + todayCharge + " (kWh)");
     $("#today-discharge").html("방전량 : " + todayDischarge + " (kWh)");
-    drawChart(todayCharge, todayDischarge, "today-charge-discharge-chart");
 
     $("#battery-volume").html("용량 : " + batteryVolume + "% (SoC)");
     drawingBatterySocChart(batteryVolume);
+
+    $("#battery-volt").html("전압 : " + batteryVolt + " (V)");
+    $("#battery-ampere").html("전류 : " + batteryAmpere + " (A)");
+
     //차트 크기 반응형 핸들러 -start
     function resizeHandler () {
         drawingBatterySocChart(batteryVolume);
@@ -137,11 +139,6 @@ function randomNumberMaker(){
         window.attachEvent('onresize', resizeHandler);
     }
     //차트 크기 반응형 핸들러 -end
-
-    $("#battery-volt").html("전압 : " + batteryVolt + " (V)");
-    $("#battery-ampere").html("전류 : " + batteryAmpere + " (A)");
-    drawChart(batteryVolt, batteryAmpere, "battery-volt-ampere-chart");
-
 }
 
 function init() {
@@ -167,26 +164,11 @@ google.charts.setOnLoadCallback(drawChart, drawChart2);
 
 //인수 3개 짜리 차트
 function drawChart(tem, hum, tagName) {
-    let data;
-    if (tagName === "today-charge-discharge-chart"){
-        data = google.visualization.arrayToDataTable([
-            ['Label', 'Value'],
-            ['Charging', Number(tem)],
-            ['Discharging', Number(hum)],
-        ]);
-    }else if(tagName === "battery-volt-ampere-chart"){
-        data = google.visualization.arrayToDataTable([
-            ['Label', 'Value'],
-            ['Volt', Number(tem)],
-            ['Ampere', Number(hum)],
-        ]);
-    }else{
-        data = google.visualization.arrayToDataTable([
-            ['Label', 'Value'],
-            ['Temperature', Number(tem)],
-            ['Humidity', Number(hum)],
-        ]);
-    }
+    let data = google.visualization.arrayToDataTable([
+        ['Label', 'Value'],
+        ['Temperature', Number(tem)],
+        ['Humidity', Number(hum)],
+    ]);
 
     let options = {
         width: "100%", height: "100%",
@@ -257,7 +239,7 @@ function drawChart2(tem, tagName) {
 }
 
 /**
- * c3js Chart
+ * c3.js Chart
  */
 function drawingBatterySocChart(batteryVolume) {
     var chart = c3.generate({

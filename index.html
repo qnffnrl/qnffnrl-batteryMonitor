@@ -69,7 +69,7 @@
 
                         <!-- Sub Title -->
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active px-1">Battery Status</li>
+                            <li class="breadcrumb-item active px-1">Battery Status <img src="images/battery_icon.png"></li>
                         </ol>
 
                         <!-- Battery State  -------------------------------------------Start------------------------------------------------------------------------->
@@ -80,7 +80,7 @@
                             <div class="col-xl-3 col-md-6">
                                 <div class="card mb-4">
                                     <div class="card-header">
-                                        <b>배터리 온도 (temporary)</b>
+                                        <b>배터리 온도</b>
                                     </div>
                                     <div class="card-body d-flex justify-content-center flex-column align-items-center">
                                         <div class="w-100 d-flex text-center">
@@ -96,15 +96,19 @@
                             <div class="col-xl-3 col-md-6">
                                 <div class="card mb-4">
                                     <div class="card-header">
-                                        <b>배터리실 온ㆍ습도</b>
+                                        <b>배터리 (temporary)</b>
                                     </div>
                                     <div class="card-body d-flex justify-content-center flex-column align-items-center">
-                                        <div class="w-100 d-flex text-center">
-                                            <div class="w-50 text-in-card" id="batteryRoom-tem"><!-- From Javascript --></div>
-                                            <div class="w-50 text-in-card" id="batteryRoom-hum"><!-- From Javascript --></div>
+                                        <div class="w-50">
+                                            <div><img class="icon-in-card" src="images/volt_icon.png"></div>
+                                            <hr class="hr-in-card">
+                                            <div class="text-in-card text-in-card-exception" id="battery-volt"><!-- From Javascript --></div>
                                         </div>
-                                        <div class="chart-sector d-flex justify-content-center flex-column align-items-center" id="batteryRoom-chart">
-                                            <!-- From Javascript -->
+                                        <br>
+                                        <div class="w-50">
+                                            <div><img class="icon-in-card" src="images/ampere_icon.png"></div>
+                                            <hr class="hr-in-card">
+                                            <div class="text-in-card text-in-card-exception" id="battery-ampere"><!-- From Javascript --></div>
                                         </div>
                                     </div>
                                 </div>
@@ -116,12 +120,16 @@
                                         <b>금일 충ㆍ방전량 (temporary)</b>
                                     </div>
                                     <div class="card-body d-flex justify-content-center flex-column align-items-center">
-                                        <div class="w-100 d-flex text-center">
-                                            <div class="w-50 text-in-card" id="today-charge"><!-- From Javascript --></div>
-                                            <div class="w-50 text-in-card" id="today-discharge"><!-- From Javascript --></div>
+                                        <div class="w-50">
+                                            <div><img class="icon-in-card" src="images/discharge_icon.png"></div>
+                                            <hr class="hr-in-card">
+                                            <div class="text-in-card text-in-card-exception" id="today-charge"><!-- From Javascript --></div>
                                         </div>
-                                        <div class="chart-sector d-flex justify-content-center flex-column align-items-center" id="today-charge-discharge-chart">
-                                            <!-- From Javascript -->
+                                        <br>
+                                        <div class="w-50">
+                                            <div><img class="icon-in-card" src="images/charge_icon.png"></div>
+                                            <hr class="hr-in-card">
+                                            <div class="text-in-card text-in-card-exception" id="today-discharge"><!-- From Javascript --></div>
                                         </div>
                                     </div>
                                 </div>
@@ -152,14 +160,14 @@
                             <div class="col-xl-3 col-md-6">
                                 <div class="card mb-4">
                                     <div class="card-header">
-                                        <b>배터리 (temporary)</b>
+                                        <b>배터리실 구역 A</b>
                                     </div>
                                     <div class="card-body d-flex justify-content-center flex-column align-items-center">
                                         <div class="w-100 d-flex text-center">
-                                            <div class="w-50 text-in-card" id="battery-volt"><!-- From Javascript --></div>
-                                            <div class="w-50 text-in-card" id="battery-ampere"><!-- From Javascript --></div>
+                                            <div class="w-50 text-in-card" id="batteryRoom-tem"><!-- From Javascript --></div>
+                                            <div class="w-50 text-in-card" id="batteryRoom-hum"><!-- From Javascript --></div>
                                         </div>
-                                        <div class="chart-sector d-flex justify-content-center flex-column align-items-center" id="battery-volt-ampere-chart">
+                                        <div class="chart-sector d-flex justify-content-center flex-column align-items-center" id="batteryRoom-chart">
                                             <!-- From Javascript -->
                                         </div>
                                     </div>
@@ -169,7 +177,7 @@
                             <div class="col-xl-3 col-md-6">
                                 <div class="card mb-4">
                                     <div class="card-header">
-                                        <b>실내 온ㆍ습도 1</b>
+                                        <b>배터리실 구역 B</b>
                                     </div>
                                     <div class="card-body d-flex justify-content-center flex-column align-items-center">
                                         <div class="w-100 d-flex text-center">
@@ -186,7 +194,7 @@
                             <div class="col-xl-3 col-md-6">
                                 <div class="card mb-4">
                                     <div class="card-header">
-                                        <b>실내 온ㆍ습도 2</b>
+                                        <b>배터리실 구역 C</b>
                                     </div>
                                     <div class="card-body d-flex justify-content-center flex-column align-items-center">
                                         <div class="w-100 d-flex text-center">
@@ -203,7 +211,7 @@
                             <div class="col-xl-3 col-md-6">
                                 <div class="card mb-4">
                                     <div class="card-header">
-                                        <b>실내 온ㆍ습도 3</b>
+                                        <b>배터리실 구역 D</b>
                                     </div>
                                     <div class="card-body d-flex justify-content-center flex-column align-items-center">
                                         <div class="w-100 d-flex text-center">
