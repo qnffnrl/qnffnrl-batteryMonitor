@@ -262,6 +262,7 @@ function setDisplayTheme(self){
         breadcrumbItem : document.getElementById('breadcrumb-item'),
         cardHeader : document.getElementsByClassName('card-header'),
         cardBody : document.getElementsByClassName('card-body'),
+        hrInCard : document.getElementsByClassName('hr-in-card'),
         textInCard: document.getElementsByClassName('text-in-card')
     };
 
@@ -281,6 +282,9 @@ function setDisplayTheme(self){
             element.cardHeader[i].style.backgroundColor = '#51515e';
             element.cardBody[i].style.backgroundColor = '#6f6f80';
             element.cardHeader[i].style.color = 'white';
+        }
+        for(let j = 0; j <= 3; j++){
+            element.hrInCard[j].style.color = 'white';
         }
         for(let k = 0; k <= 13; k++){
             element.textInCard[k].style.color = 'white';
@@ -302,6 +306,9 @@ function setDisplayTheme(self){
             element.cardHeader[i].style.backgroundColor = '#F7F7F7';
             element.cardHeader[i].style.color = 'black';
             element.cardBody[i].style.backgroundColor = '#FFFFFF';
+        }
+        for(let j = 0; j <= 3; j++){
+            element.hrInCard[j].style.color = 'black';
         }
         for(let k = 0; k <= 13; k++){
             element.textInCard[k].style.color = 'black';
