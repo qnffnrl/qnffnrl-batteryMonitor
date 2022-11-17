@@ -249,7 +249,7 @@ function batteryThermometerDraw(tem){
  *  Change Mode
  *  Dark <-> Light
  */
-function setDisplayAppreance(self){
+function setDisplayTheme(self){
 
     //Target to Change
     let element = {
@@ -262,7 +262,7 @@ function setDisplayAppreance(self){
 
     //Change to DarkMode
     if(self.value === 'Dark'){
-        element.body.style.backgroundColor = '#2c2c34';  //배경색 변경
+        element.body.style.backgroundColor = '#2c2c34';
         element.pcs.style.color = 'white';
         element.operatingState.style.color = 'white';
         element.title.style.color = 'white';
