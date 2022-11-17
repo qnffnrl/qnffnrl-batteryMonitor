@@ -23,10 +23,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 ![v2](https://user-images.githubusercontent.com/71891870/202223325-702b3584-f16a-4fed-9c7d-16185fd1226a.png)
 
 ## Final Design (Theme)
-# Light Mode
+### Light Mode
 ![light](https://user-images.githubusercontent.com/71891870/202478717-368e63a1-9767-43e4-999e-f446ba526c1b.png)
 
-# Dark Mode
+### Dark Mode
 ![dark](https://user-images.githubusercontent.com/71891870/202478727-f56ba866-4699-4710-885b-f5781abea24c.png)
 
 ## Trouble Shooting
