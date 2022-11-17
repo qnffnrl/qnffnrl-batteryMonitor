@@ -245,5 +245,37 @@ function batteryThermometerDraw(tem){
     setTimeout(setTemperature, 1);
 }
 
+/**
+ *  Change Mode
+ *  Dark <-> Light
+ */
+function setDisplayAppreance(self){
 
+    //Target to Change
+    let element = {
+        body : document.querySelector('body'),
+        pcs : document.getElementById('pcs'),
+        operatingState : document.getElementById('operating-state'),
+        title : document.getElementById('title'),
+        breadcrumbItem : document.getElementById('breadcrumb-item'),
+    };
 
+    //Change to DarkMode
+    if(self.value === 'Dark'){
+        element.body.style.backgroundColor = '#2c2c34';  //배경색 변경
+        element.pcs.style.color = 'white';
+        element.operatingState.style.color = 'white';
+        element.title.style.color = 'white';
+        element.breadcrumbItem.style.color = 'white';
+        self.value = 'Light';
+
+    //Change to LightMode
+    } else {
+        element.body.style.backgroundColor = 'white';
+        element.pcs.style.color = 'black';
+        element.operatingState.style.color = 'black';
+        element.title.style.color = 'black';
+        element.breadcrumbItem.style.color = 'black';
+        self.value = 'Dark';
+    }
+}

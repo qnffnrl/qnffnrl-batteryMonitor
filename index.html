@@ -7,6 +7,12 @@
         <title>Dashboard - Battery Status</title>
         <link rel="shortcut icon" href="images/tab_icon.png">
 
+        <!-- 1번 카드 온도계 CSS -->
+        <link rel="stylesheet" href="css/thermometer.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="css/custom.css">
+
         <!-- Bootstrap Default -->
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet">
         <link href="css/styles.css" rel="stylesheet">
@@ -26,10 +32,12 @@
         <!-- Navigation Bar -->
         <nav id="nav-bar" class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Logo -->
-            <a class="navbar-brand ps-3" href="index.html">BA Energy</a>
+            <a id="logo" class="navbar-brand ps-3" href="index.html">BA Energy</a>
+
+            <input class="btn" type="button" value="Dark" onclick="setDisplayAppreance(this);">
 
             <!-- Present Time Print -->
-            <div id="time-sector" class="d-md-inline-block ms-auto me-0 me-md-3 my-2 my-md-0">
+            <div id="time-sector" class="d-md-inline-block ms-auto me-0 me-md-3 my-2 my-md-0 d-flex">
                 <div>
                     <div>현재시간</div>
                     <div class="bn_date">
@@ -49,12 +57,12 @@
                         <!-- PCS 용량, 운영상태 출력 부분 -->
                         <div id="power-state-parent" class="mt-3 d-flex justify-content-end">
                             <div class="border fs-5 d-flex justify-content-between align-items-center px-2">
-                                <span id="pcs">PCS 용량 : 200kw</span>
+                                <span id="pcs">PCS 용량 : <i>200kW</i></span>
                             </div>
 
                             <!-- Power State -->
                             <div id="power-state" class="border fs-4 d-flex justify-content-between align-items-center px-2">
-                                <span>운영상태</span>
+                                <span id="operating-state">운영상태</span>
                                 <span>
                                     <div class="circle">
                                         <!-- From Javascript -->
@@ -64,12 +72,12 @@
                         </div>
 
                         <!-- Title -->
-                        <h1 class="mt-3">Dashboard</h1>
+                        <h1 id="title" class="mt-3">Dashboard</h1>
                         <hr style="border: 1px solid black;">
 
                         <!-- Sub Title -->
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active px-1">Battery Status <img src="images/battery_icon.png"></li>
+                            <li id="breadcrumb-item" class="breadcrumb-item active px-1">Battery Status <img src="images/battery_icon.png"></li>
                         </ol>
 
                         <!-- Battery State  -------------------------------------------Start------------------------------------------------------------------------->

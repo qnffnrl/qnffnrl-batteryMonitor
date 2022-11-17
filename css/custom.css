@@ -1,0 +1,98 @@
+#nav-bar{
+    height: 80px;
+}
+
+#logo {
+    width: 130px;
+}
+
+.btn {
+
+    margin: 6px 10px 0 10px;
+    width: 60px;
+    border-radius: 50px;
+    font-size: 15px;
+    text-align: center;
+    background-color: #212529 !important;
+    color: white !important;
+    border: 1px solid white !important;
+}
+
+.btn:hover {
+    background-color: #7c7878 !important;
+    color: black !important;
+}
+
+#time-sector{
+    color: white;
+    text-align: center;
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 0 3px 0 3px;
+    margin-right: 20px !important;
+}
+
+#time-sector > div > div:first-child {
+    border-bottom: 1px solid white;
+}
+
+.bn_date {
+    font-weight: bold;
+}
+
+#power-state-parent{
+    height: 60px;
+}
+
+#pcs{
+    font-size: 0.9em;
+}
+
+#power-state{
+    width: 20%;
+    min-width: 160px;
+    margin-left: 10px;
+}
+
+.circle {
+    margin: 0 auto;
+    width: 80%;
+    height: 80%;
+    border-radius: 50%;
+    animation: powerStateCircle 2s infinite;
+}
+
+@keyframes powerStateCircle {
+    from{
+        border: 17px solid #dedede;
+    }
+}
+
+.card-body{
+    height: 300px;
+}
+
+.text-in-card {
+    font-weight: bold;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-in-card-exception{
+    justify-content: start;
+}
+
+.icon-in-card{
+    width: 2em;
+}
+
+.hr-in-card{
+    margin: 10px 0 0 0;
+}
+
+.chart-sector{
+    width: 100%;
+    height: 80%;
+}
