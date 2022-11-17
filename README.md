@@ -22,6 +22,13 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 ## Version 2
 ![v2](https://user-images.githubusercontent.com/71891870/202223325-702b3584-f16a-4fed-9c7d-16185fd1226a.png)
 
+## Final Design (Theme)
+# Light Mode
+![light](https://user-images.githubusercontent.com/71891870/202478717-368e63a1-9767-43e4-999e-f446ba526c1b.png)
+
+# Dark Mode
+![dark](https://user-images.githubusercontent.com/71891870/202478727-f56ba866-4699-4710-885b-f5781abea24c.png)
+
 ## Trouble Shooting
 * 페이지를 768px(col-md) 이하로 줄였을 때 현재 시간을 표시하는 부분이 표시가 안됨
 * 원인 대충 파악함 -> 부트스트랩 템플릿 CSS 파일에 @media라는 문법들이 있는데 이게 if와 똑같은 의미임
