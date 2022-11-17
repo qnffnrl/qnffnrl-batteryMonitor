@@ -254,28 +254,53 @@ function setDisplayTheme(self){
     //Target to Change
     let element = {
         body : document.querySelector('body'),
+        btn : document.getElementsByClassName('btn')[0],
         pcs : document.getElementById('pcs'),
         operatingState : document.getElementById('operating-state'),
         title : document.getElementById('title'),
+        hr : document.getElementById('main-hr'),
         breadcrumbItem : document.getElementById('breadcrumb-item'),
+        cardHeader : document.getElementsByClassName('card-header'),
+        cardBody : document.getElementsByClassName('card-body'),
+        textInCard: document.getElementsByClassName('text-in-card')
     };
 
     //Change to DarkMode
     if(self.value === 'Dark'){
         element.body.style.backgroundColor = '#2c2c34';
+        element.btn.style.backgroundColor = 'white';
+        element.btn.style.color = 'black';
         element.pcs.style.color = 'white';
         element.operatingState.style.color = 'white';
         element.title.style.color = 'white';
+        element.hr.style.color = 'white';
         element.breadcrumbItem.style.color = 'white';
         self.value = 'Light';
+
+        for(let i = 0; i <= 7; i++){
+            element.cardHeader[i].style.backgroundColor = '#51515e';
+            element.cardBody[i].style.backgroundColor = '#6f6f80';
+            element.cardHeader[i].style.color = 'white';
+            element.textInCard[i].style.color = 'white';
+        }
 
     //Change to LightMode
     } else {
         element.body.style.backgroundColor = 'white';
+        element.btn.style.backgroundColor = '#212529';
+        element.btn.style.color = 'white';
         element.pcs.style.color = 'black';
         element.operatingState.style.color = 'black';
         element.title.style.color = 'black';
+        element.hr.style.color = 'black';
         element.breadcrumbItem.style.color = 'black';
         self.value = 'Dark';
+
+        for(let i = 0; i <= 7; i++){
+            element.cardHeader[i].style.backgroundColor = '#F7F7F7';
+            element.cardHeader[i].style.color = 'black';
+            element.cardBody[i].style.backgroundColor = '#FFFFFF';
+            element.textInCard[i].style.color = 'black';
+        }
     }
 }
