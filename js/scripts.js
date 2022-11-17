@@ -281,7 +281,9 @@ function setDisplayTheme(self){
             element.cardHeader[i].style.backgroundColor = '#51515e';
             element.cardBody[i].style.backgroundColor = '#6f6f80';
             element.cardHeader[i].style.color = 'white';
-            element.textInCard[i].style.color = 'white';
+        }
+        for(let k = 0; k <= 13; k++){
+            element.textInCard[k].style.color = 'white';
         }
 
     //Change to LightMode
@@ -300,7 +302,9 @@ function setDisplayTheme(self){
             element.cardHeader[i].style.backgroundColor = '#F7F7F7';
             element.cardHeader[i].style.color = 'black';
             element.cardBody[i].style.backgroundColor = '#FFFFFF';
-            element.textInCard[i].style.color = 'black';
+        }
+        for(let k = 0; k <= 13; k++){
+            element.textInCard[k].style.color = 'black';
         }
     }
 }
