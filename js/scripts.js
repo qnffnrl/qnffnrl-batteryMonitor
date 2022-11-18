@@ -83,23 +83,23 @@ function apiCall() {
             let rack5 = data.rack5[0]; //실내 온ㆍ습도 3
 
             $("#battery-tem").html("온도 : " + rack2['sd1'] + "(℃)");
-            batteryThermometerDraw(rack2['sd1']);
+            DrawBatteryThermometer(rack2['sd1']);
 
             $("#batteryRoom-tem").html("온도 : " + rack2['sd1'] + " (℃)");
             $("#batteryRoom-hum").html("습도 : " + rack2['sd2'] + " (%)");
-            drawChart(rack2['sd1'], rack2['sd2'], "batteryRoom-chart");
+            drawTemHumChart(rack2['sd1'], rack2['sd2'], "batteryRoom-chart");
 
             $("#indoor1-tem").html("온도 : " + rack3['sd1'] + " (℃)");
             $("#indoor1-hum").html("습도 : " + rack3['sd2'] + " (%)");
-            drawChart(rack3['sd1'], rack3['sd2'], "indoor1-chart");
+            drawTemHumChart(rack3['sd1'], rack3['sd2'], "indoor1-chart");
 
             $("#indoor2-tem").html("온도 : " + rack4['sd1'] + " (℃)");
             $("#indoor2-hum").html("습도 : " + rack4['sd2'] + " (%)");
-            drawChart(rack4['sd1'], rack4['sd2'], "indoor2-chart");
+            drawTemHumChart(rack4['sd1'], rack4['sd2'], "indoor2-chart");
 
             $("#indoor3-tem").html("온도 : " + rack5['sd1'] + " (℃)");
             $("#indoor3-hum").html("습도 : " + rack5['sd2'] + " (%)");
-            drawChart(rack5['sd1'], rack5['sd2'], "indoor3-chart");
+            drawTemHumChart(rack5['sd1'], rack5['sd2'], "indoor3-chart");
 
         });
 }
@@ -161,7 +161,7 @@ $(window).on('load', function(){
 google.charts.load('current', {'packages':['gauge']});
 google.charts.setOnLoadCallback(drawChart);
 
-function drawChart(tem, hum, tagName) {
+function drawTemHumChart(tem, hum, tagName) {
     let data = google.visualization.arrayToDataTable([
         ['Label', 'Value'],
         ['Temperature', Number(tem)],
@@ -225,7 +225,7 @@ function drawingBatterySocChart(batteryVolume) {
  * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-function batteryThermometerDraw(tem){
+function DrawBatteryThermometer(tem){
     const units = {Celcius: "°C"};
 
     const config = {
