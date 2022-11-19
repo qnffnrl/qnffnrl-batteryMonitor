@@ -159,7 +159,7 @@ $(window).on('load', function(){
  * Google Chart
  */
 google.charts.load('current', {'packages':['gauge']});
-google.charts.setOnLoadCallback(drawChart);
+google.charts.setOnLoadCallback(drawTemHumChart);
 
 function drawTemHumChart(tem, hum, tagName) {
     let data = google.visualization.arrayToDataTable([
