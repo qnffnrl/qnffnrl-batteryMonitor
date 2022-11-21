@@ -18,7 +18,7 @@ if (state.value === 0) {
 else if (state.value === 1) {
     $(function (){
         $(".circle").css({
-            "border": "17px #198754 solid",
+            "border": "17px #1cc88a solid",
         })
     })
 }
@@ -101,7 +101,7 @@ function apiCall() {
             $("#indoor3-hum").html("습도 : " + rack5['sd2'] + " (%)");
             drawTemHumChart(rack5['sd1'], rack5['sd2'], "indoor3-chart");
 
-        });
+        }).catch((error) => console.log("error : ", error));
 }
 
 /**
@@ -246,7 +246,7 @@ function DrawBatteryThermometer(tem){
 }
 
 /**
- *  Change Mode
+ *  Change Theme
  *  Dark <-> Light
  */
 function setDisplayTheme(self){
@@ -259,6 +259,7 @@ function setDisplayTheme(self){
         operatingState : document.getElementById('operating-state'),
         title : document.getElementById('title'),
         hr : document.getElementById('main-hr'),
+        subTitleIcon : document.getElementById('sub-title-icon'),
         breadcrumbItem : document.getElementById('breadcrumb-item'),
         cardHeader : document.getElementsByClassName('card-header'),
         cardBody : document.getElementsByClassName('card-body'),
@@ -275,12 +276,13 @@ function setDisplayTheme(self){
         element.operatingState.style.color = 'white';
         element.title.style.color = 'white';
         element.hr.style.color = 'white';
+        element.subTitleIcon.style.filter = 'opacity(0.6) drop-shadow(0 0 0 white)';
         element.breadcrumbItem.style.color = 'white';
         self.value = 'Light';
 
         for(let i = 0; i <= 7; i++){
             element.cardHeader[i].style.backgroundColor = '#51515e';
-            element.cardBody[i].style.backgroundColor = '#6f6f80';
+            element.cardBody[i].style.backgroundColor = '#5a5c69';
             element.cardHeader[i].style.color = 'white';
         }
         for(let j = 0; j <= 3; j++){
@@ -299,6 +301,7 @@ function setDisplayTheme(self){
         element.operatingState.style.color = 'black';
         element.title.style.color = 'black';
         element.hr.style.color = 'black';
+        element.subTitleIcon.style.filter = '';
         element.breadcrumbItem.style.color = 'black';
         self.value = 'Dark';
 
