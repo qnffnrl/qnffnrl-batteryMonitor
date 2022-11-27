@@ -2,34 +2,7 @@
  * 전원 동작 출력 부분
  * Power state
  */
-let state = {
-    value : 1
-}; //임시 선언
 
-//System Stop
-if (state.value === 0) {
-    $(function (){
-        $(".circle").css({
-            "border": "17px #DC3545 solid"
-        })
-    })
-}
-//System Start
-else if (state.value === 1) {
-    $(function (){
-        $(".circle").css({
-            "border": "17px #1cc88a solid",
-        })
-    })
-}
-//System Pause
-else{
-    $(function (){
-        $(".circle").css({
-            "border": "17px #F27B25 solid"
-        })
-    })
-}
 
 /**
  * 현재 시간 출력 부분
@@ -105,55 +78,62 @@ function apiCall() {
 }
 
 /**
- * 임시
- * 난수 생성
- * 금일 충방전량, 배터리 용량, 배터리(Volt, Ampere)
+ * About Battery Data
+ * API Call / Parsing
  */
-function randomNumberMaker(){
+const url2 = "http://121.178.2.4:9000/api?api_key=4g21e1e2dd567ws11kk274nbdd3e0s30";
+function apiCall2(){
+    fetch(url2)
+        .then((response) => {
+            return response.json();
+        })
+        .then((data) => {
+            const powerStatus = Number(data.status);
 
-    const todayCharge = Math.floor(Math.random() * 80) + 30;
-    const todayDischarge = Math.floor(Math.random() * 50) + 30;
+            //System Stop
+            if (powerStatus === 0) {
+                $(".circle").css({"border": "17px #DC3545 solid"})
+            }
+            //System Start
+            else if (powerStatus === 1) {
+                $(".circle").css({"border": "17px #1cc88a solid"})
+            }
+            //System Pause
+            else{
+                $(".circle").css({"border": "17px #F27B25 solid"})
+            }
 
-    const batteryVolume = Math.floor(Math.random() * 50) + 50;
+            const todayCharge = data.charge;
+            const todayDischarge = data.discharge;
 
-    const batteryVolt = Math.floor(Math.random() * 20) + 40;
-    const batteryAmpere = Math.floor(Math.random() * 20) + 40;
+            const batteryVolume = data.soc;
 
-    $("#today-charge").html("충전량 : " + todayCharge + " (kWh)");
-    $("#today-discharge").html("방전량 : " + todayDischarge + " (kWh)");
+            const batteryVolt = data.volt;
+            const batteryAmpere = data.cur;
 
-    $("#battery-volume").html("용량 : " + batteryVolume + "% (SoC)");
-    drawingBatterySocChart(batteryVolume);
+            $("#today-charge").html("충전량 : " + todayCharge + " (kWh)");
+            $("#today-discharge").html("방전량 : " + todayDischarge + " (kWh)");
 
-    $("#battery-volt").html("전압 : " + batteryVolt + " (V)");
-    $("#battery-ampere").html("전류 : " + batteryAmpere + " (A)");
+            $("#battery-volume").html("용량 : " + batteryVolume + "%");
+            drawingBatterySocChart(batteryVolume);
 
-    //차트 크기 반응형 핸들러 -start
-    function resizeHandler () {
-        drawingBatterySocChart(batteryVolume);
-    }
-    if (window.addEventListener) {
-        window.addEventListener('resize', resizeHandler, false);
-    }
-    else if (window.attachEvent) {
-        window.attachEvent('onresize', resizeHandler);
-    }
-    //차트 크기 반응형 핸들러 -end
+            $("#battery-volt").html("전압 : " + batteryVolt + " (V)");
+            $("#battery-ampere").html("전류 : " + batteryAmpere + " (A)");
+
+            //차트 크기 반응형 핸들러 -start
+            function resizeHandler () {
+                drawingBatterySocChart(batteryVolume);
+            }
+            if (window.addEventListener) {
+                window.addEventListener('resize', resizeHandler, false);
+            }
+            else if (window.attachEvent) {
+                window.attachEvent('onresize', resizeHandler);
+            }
+            //차트 크기 반응형 핸들러 -end
+
+        })
 }
-
-function init() {
-    clock();
-    apiCall()
-    randomNumberMaker()
-
-    setInterval(clock, 1000);               //현재 시간 1초 루프
-    setInterval(apiCall, 10000);            //API 10초 루프
-    setInterval(randomNumberMaker, 10000);  //난수 생성 10초 루프
-}
-//Static Resource 모두 로딩 후 Start
-$(window).on('load', function(){
-    init();
-});
 
 /**
  * Google Chart
@@ -318,3 +298,17 @@ function setDisplayTheme(self){
         }
     }
 }
+
+function init() {
+    clock();
+    apiCall()
+    apiCall2()
+
+    setInterval(clock, 1000);               //현재 시간 1초 루프
+    setInterval(apiCall, 1000);            //API 10초 루프
+    setInterval(apiCall2, 1000);           //API 10초 루프
+}
+//Static Resource 모두 로딩 후 Start
+$(window).on('load', function(){
+    init();
+});
