@@ -1,6 +1,7 @@
 # qnffnrl-batteryMonitor
 * 배터리 모니터링 페이지 퍼블리싱
 
+# https://github.com/qnffnrl/webSocketa <- 으로 이전
 
 ## Reference
 * Template from -> https://startbootstrap.com/template/sb-admin
